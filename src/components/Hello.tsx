@@ -6,6 +6,11 @@ export interface IProps {
 }
 
 class Hello extends React.Component<IProps, object>{
+  public state = {num: 0};
+
+  public shouldComponentUpdate(): boolean{
+    return true
+  }
   public render(){
     const { name, enthusiasmLevel} = this.props;
 
