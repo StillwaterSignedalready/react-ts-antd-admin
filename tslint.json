@@ -2,7 +2,8 @@
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
   "rules": { 
     "no-console": false,
-    "only-arrow-functions": false
+    "only-arrow-functions": false,
+    "no-debugger": false
   }, 
   "linterOptions": {
     "exclude": [

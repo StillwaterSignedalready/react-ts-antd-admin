@@ -11,8 +11,8 @@ export interface IProps {
 
 class Hello extends React.Component<IProps, object>{
   private constructor(props: IProps){
-    console.log('~~~ constructor ~~~')
     super(props)
+    console.log('~~~ constructor ~~~', this)
   }
 
   public componentWillReceiveProps(){ // 在已经挂在的组件(mounted component)接收到新props时触发
@@ -35,10 +35,16 @@ class Hello extends React.Component<IProps, object>{
     console.log('加载loading条,这里setState方法不会触发重渲染')
   }
   
+  public cb = () => {
+    console.log('cb called', this)
+    debugger
+    this.props.method();
+  }
+
   // 返回一个 React 元素，纯函数
   public render(){ // ========================== render ==========================
     console.log('~~~ render ~~~')
-    const { name, enthusiasmLevel, method} = this.props;
+    const { name, enthusiasmLevel} = this.props;
     
     if (enthusiasmLevel && enthusiasmLevel <= 0) {
       throw new Error('You could be a little more enthusiastic. :D');
@@ -47,8 +53,8 @@ class Hello extends React.Component<IProps, object>{
     return (
       <div className="hello">
         <div className="greeting">Hello {name + getExclamationMarks(enthusiasmLevel || 0)}</div>
-        <Button>
-          <Icon type="left" onClick={method}/>Backward
+        <Button onClick={this.cb}>
+          <Icon type="left"/>Backward
         </Button>
       </div>
     )
