@@ -3,7 +3,11 @@
   "rules": { 
     "no-console": false,
     "only-arrow-functions": false,
-    "no-debugger": false
+    "no-debugger": false,
+    "no-unused-variable": false,
+    "no-shadowed-variable": false,
+    "no-bitwise": false,
+    "interface-over-type-literal": false
   }, 
   "linterOptions": {
     "exclude": [
