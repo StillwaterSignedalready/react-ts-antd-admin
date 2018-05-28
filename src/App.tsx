@@ -17,7 +17,6 @@ class App extends React.Component <{}, Istate>{
 
   public activate = () => {
     // 如果在shouldComponentUpdate或者componentWillUpdate方法中调用setState，此时this._pending-StateQueue != null，就会造成循环调用
-    console.log('!');
     this.setState((prevState, props) => {
       return {enthusiasmLevel: prevState.enthusiasmLevel + 1};
     });
