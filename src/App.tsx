@@ -40,7 +40,7 @@ class App extends React.Component <{}, Istate>{
             /* 这样调用这个函数：render(props), show和toggleable由Toggleable组件提供，是它的内部状态 */
             ({ show, toggle}) => (
               <>
-                <div onClick={(toggle)}>
+                <div onClick={toggle}>
                   <h1>some title</h1>
                 </div>
                 {show? <p>some content</p>: null}
