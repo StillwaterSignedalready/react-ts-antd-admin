@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { MouseEvent } from 'react'
 
 const isFunction = (f: any) => (typeof f === 'function')
 
@@ -31,6 +32,7 @@ export default class Toggleable extends React.Component<Props, State>{
       toggle: this.toggle
     }
 
+    // 用过render-callback方法，把外部的render导入组件内部，使render可以千变万化
     if(render){
       return render(renderProps)
     }
@@ -38,7 +40,7 @@ export default class Toggleable extends React.Component<Props, State>{
     return isFunction(children) ? children!(renderProps) : null
   }
 
-  private toggle = (event: MouseEvent) => this.setState(updateShowState)
+  private toggle = (event: MouseEvent<HTMLElement>) => this.setState(updateShowState)
 }
 
 const updateShowState = (prevState: State) => ({show: !prevState.show})
