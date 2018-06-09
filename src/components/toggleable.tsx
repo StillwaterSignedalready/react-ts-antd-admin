@@ -1,4 +1,5 @@
 import * as React from 'react';
+import MenuItem from './MenuItem';
 
 const isFunction = (f: any) => (typeof f === 'function')
 
