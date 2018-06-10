@@ -29,6 +29,7 @@ type ToggleableComponentProps<P extends object = object> = {
   toggle: Toggleable['toggle']
 } & P
 
+// 该组件的原理类似于闭包的私有作用域
 class Toggleable extends React.Component<Props, State>{
   public static readonly defaultProps: Props = defaultProps;
   public readonly state: State = initialState;

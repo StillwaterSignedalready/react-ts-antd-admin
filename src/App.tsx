@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import Hello from './components/Hello';
+import { Menu, ToggleableMenu, ToggleableMenuViaComponentInjection } from './components/MenuItem';
 import Toggleable from './components/toggleable';
 import logo from './logo.svg';
 
@@ -48,6 +49,14 @@ class App extends React.Component <{}, Istate>{
             )
           }
         </Toggleable>
+        <ToggleableMenu title={'hey'}>
+          some what
+        </ToggleableMenu>
+        <ToggleableMenuViaComponentInjection title={'sd'}>
+          another what
+        </ToggleableMenuViaComponentInjection>
+        <h1>Menu</h1>
+        <Menu />
       </div>
     );
   }
