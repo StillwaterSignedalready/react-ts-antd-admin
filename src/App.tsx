@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import { GlobalContext } from './components/contexts';
 import Hello from './components/Hello';
 import { Menu, ToggleableMenu, ToggleableMenuViaComponentInjection } from './components/MenuItem';
 import Toggleable from './components/toggleable';
@@ -49,9 +50,13 @@ class App extends React.Component <{}, Istate>{
             )
           }
         </Toggleable>
-        <ToggleableMenu title={'hey'}>
-          some what
-        </ToggleableMenu>
+        <GlobalContext.Provider
+          value='white!'
+        >
+          <ToggleableMenu title={'hey'}>
+            some what
+          </ToggleableMenu>
+        </GlobalContext.Provider>
         <ToggleableMenuViaComponentInjection title={'sd'}>
           another what
         </ToggleableMenuViaComponentInjection>

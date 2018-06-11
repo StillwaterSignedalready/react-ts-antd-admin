@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { SFC } from 'react' // SFC: StatelessComponent<P>
+import { GlobalContext } from './contexts';
 import Toggleable from './toggleable';
 import {ToggleableComponentProps} from './toggleable';
 
@@ -29,13 +30,17 @@ type Props = {
 }
 
 const ToggleableMenu: SFC<Props> = ({ title, children }) => (
-  <Toggleable 
-    render = {({ show, toggle }) => (
-      <MenuItem show={show} title={title} toggle={toggle}>
-        {children}
-      </MenuItem>
-    )}
-  />
+  <GlobalContext.Consumer>
+    {(val: string) =>
+      <Toggleable 
+        render = {({ show, toggle }) => (
+          <MenuItem show={show} title={title} toggle={toggle}>
+            {val}
+          </MenuItem>
+        )}
+      />
+    }
+  </GlobalContext.Consumer>
 )
 
 const ToggleableMenuViaComponentInjection: SFC<ToggleableMenuProps> = ({title, children}) => (
