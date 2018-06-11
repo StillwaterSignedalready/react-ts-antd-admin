@@ -1,5 +1,6 @@
 import { Button, Icon } from 'antd';
 import * as React from 'react';
+import ButtonCounter from './stateful';
 
 export interface IProps {
   name: string;
@@ -37,7 +38,6 @@ class Hello extends React.Component<IProps, object>{
   
   public cb = () => {
     console.log('cb called', this)
-    debugger
     this.props.method();
   }
 
@@ -51,12 +51,17 @@ class Hello extends React.Component<IProps, object>{
     }
     
     return (
+      <>
       <div className="hello">
         <div className="greeting">Hello {name + getExclamationMarks(enthusiasmLevel || 0)}</div>
         <Button onClick={this.cb}>
           <Icon type="left"/>Backward
         </Button>
       </div>
+      <div>
+        <ButtonCounter />
+      </div>
+      </>
     )
   }
   

@@ -1,6 +1,9 @@
 import * as React from 'react';
 import './App.css';
+import { GlobalContext } from './components/contexts';
 import Hello from './components/Hello';
+import { Menu, ToggleableMenu, ToggleableMenuViaComponentInjection } from './components/MenuItem';
+import Toggleable from './components/toggleable';
 import logo from './logo.svg';
 
 export interface Istate {
@@ -34,6 +37,31 @@ class App extends React.Component <{}, Istate>{
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <Toggleable>
+          {
+            /* 这样调用这个函数：render(props), show和toggleable由Toggleable组件提供，是它的内部状态 */
+            ({ show, toggle}) => (
+              <>
+                <div onClick={toggle}>
+                  <h1>some title</h1>
+                </div>
+                {show? <p>some content</p>: null}
+              </>
+            )
+          }
+        </Toggleable>
+        <GlobalContext.Provider
+          value='white!'
+        >
+          <ToggleableMenu title={'hey'}>
+            some what
+          </ToggleableMenu>
+        </GlobalContext.Provider>
+        <ToggleableMenuViaComponentInjection title={'sd'}>
+          another what
+        </ToggleableMenuViaComponentInjection>
+        <h1>Menu</h1>
+        <Menu />
       </div>
     );
   }
